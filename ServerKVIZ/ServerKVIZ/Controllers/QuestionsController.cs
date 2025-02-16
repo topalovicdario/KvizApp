@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using ServerKVIZ.Models;
 using ServerKVIZ.Services;
+using System;
 using System.Text.Json.Serialization;
+using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace ServerKVIZ.Controllers
 {
@@ -12,12 +14,13 @@ namespace ServerKVIZ.Controllers
         private readonly IServiceProvider serviceProvider;
         
         private  GameSession gameSession;
-
+       
         public QuestionsController( IServiceProvider service, GameSession game)
         {
             serviceProvider = service;
             gameSession = game;
-
+            
+           
         }
 
         [HttpGet]
@@ -38,7 +41,14 @@ namespace ServerKVIZ.Controllers
             //var questionsService = serviceProvider.GetRequiredService<DataBaseQuestion>();
             //gameSession = ActivatorUtilities.CreateInstance<GameSession>(serviceProvider, request.category,request.difficulty, questionsService);
             gameSession.Init(request.Category, request.Difficulty);
-            await gameSession.StoreQuestions(request.Category, request.Difficulty);
+            await gameSession.StoreQuestions();
+            await Task.Delay(5000);
+            await gameSession.StoreQuestions();
+
+            await Task.Delay(5000);
+            await gameSession.StoreQuestions();
+            await Task.Delay(5000);
+            await gameSession.StoreQuestions();
 
             Console.WriteLine("Game Session created with id: " + gameSession.Id +" parameters "+ gameSession.Category + " "+ request.Difficulty);
             return Ok();
@@ -52,8 +62,9 @@ namespace ServerKVIZ.Controllers
         }
         [HttpPost("checkAnswer")]
         
-        public ActionResult<SendAnswerCheckQuestion> CheckAnswer([FromBody] AnswerRequest request)
+        public  async Task<ActionResult<SendAnswerCheckQuestion>>CheckAnswer([FromBody] AnswerRequest request)
         {
+            
             Console.WriteLine($"Primljen odgovor: {request.Answer}, ID: {request.Id} Score: {request.Score}");
 
             var question = gameSession.GetById(request.Id);
@@ -85,6 +96,8 @@ namespace ServerKVIZ.Controllers
             Console.WriteLine($"Odgovor je : {ans.is_correct} {ans.corect_ans} to je tocan odg, server");
             return ans;
         }
+      
+        
 
     }
     public class AnswerRequest
@@ -101,7 +114,11 @@ namespace ServerKVIZ.Controllers
         public string Difficulty { get; set; }
         public string Duration { get; set; }
     }
-
+    public class AuthRequest
+    {
+        public string Nickname { get; set; }
+        public string Password { get; set; }
+    }
 
     public class SendAnswerCheckQuestion
     {

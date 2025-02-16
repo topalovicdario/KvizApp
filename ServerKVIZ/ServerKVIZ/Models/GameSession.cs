@@ -10,9 +10,9 @@ namespace ServerKVIZ.Models
         public string Category { get; private set; }
         public string Difficulty { get; private set; }
         public DataBaseQuestion DataBaseQuestion { get; private set; }
-        public LocalDataBase LocalDataBase { get; private set; }
-        public int Id_player1 { get; private set; }
-        public int Id_player2 { get; private set; }
+        public OnlineDataBase OnlineDataBase { get; private set; }
+        public Players player1{ get; private set; }
+        public Players player2 { get; private set; }
 
         public GameSession(DataBaseQuestion dataBaseQuestion)
         {
@@ -38,9 +38,9 @@ namespace ServerKVIZ.Models
         {
             return await DataBaseQuestion.GetQuestion();
         }
-        public async Task StoreQuestions(string categ, string difficulty)
+        public async Task StoreQuestions()
         {
-            await DataBaseQuestion.StoreQuestions(categ, difficulty);
+            await DataBaseQuestion.StoreQuestions(Category,Difficulty);
         }
         public ClientQuestion GetById(int id)
         {

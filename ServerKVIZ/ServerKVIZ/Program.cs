@@ -17,6 +17,7 @@ builder.Services.AddTransient<GameSession>();
 
 // Register IMemoryCache
 builder.Services.AddMemoryCache();
+builder.Services.AddTransient<OnlineDataBase>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

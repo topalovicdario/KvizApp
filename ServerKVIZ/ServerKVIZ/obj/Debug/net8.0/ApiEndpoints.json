@@ -21,6 +21,32 @@
   },
   {
     "ContainingType": "ServerKVIZ.Controllers.QuestionsController",
+    "Method": "AuthentificateUser",
+    "RelativePath": "Questions/authMe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ServerKVIZ.Controllers.AuthRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ServerKVIZ.Controllers.QuestionsController",
     "Method": "CheckAnswer",
     "RelativePath": "Questions/checkAnswer",
     "HttpMethod": "POST",

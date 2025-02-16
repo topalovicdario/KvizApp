@@ -5,13 +5,15 @@
         public string NickName {  get; private set; }
         public int Score { get; private set; }
         public int Id { get; private set; }
-        public int Password { get; private set; }
-        public Players(string nickName, int password)
+        public string Password { get; private set; }
+        public Players(int id,string nickName, string password, int score)
         {
             NickName = nickName;
             Password = password;
-            Score = 0;
-            Id = Guid.NewGuid().GetHashCode();
+            Score = score;
+            Id = id;
+
+
         }
 
        

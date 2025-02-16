@@ -32,6 +32,8 @@ namespace ServerKVIZ.Models
         {
 
             await database.StoreQuestions(categ, difficulty);  // Await the async method
+           
+       
             var questions = database.GetQuestions(categ, difficulty);
             _questionsCache.Set(CacheKey, questions);  // Cache the questions
         }

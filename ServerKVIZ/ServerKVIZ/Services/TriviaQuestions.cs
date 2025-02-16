@@ -1,6 +1,7 @@
 ﻿using ServerKVIZ.Models;
 using System.Net.Http;
 using System.Net;
+using System.Reflection;
 
 namespace ServerKVIZ.Services
 {
@@ -22,6 +23,9 @@ namespace ServerKVIZ.Services
 
             try
             {
+
+
+
                 var response = await _httpClient.GetFromJsonAsync<TriviaOutput>(url);
                 if (response?.Results == null || response.ResponseCode != 0)
                 {
@@ -42,7 +46,8 @@ namespace ServerKVIZ.Services
                         q.Category,
                         q.Difficulty
                     )).ToList();
-                
+
+
             }
             catch (Exception ex)
             {
@@ -51,8 +56,11 @@ namespace ServerKVIZ.Services
                 Console.WriteLine($"Error fetching questions: {ex.Message}");
                 questions.Clear();
             }
+            questions = questions
+    .GroupBy(q => q.Text)          // Grupiramo po tekstu
+    .Select(g => g.First())        // Uzimamo samo prvi iz svake grupe
+    .ToList();
         }
-
         public List<ClientQuestion> GetQuestions(string cat, string dif)
         {
             return questions;

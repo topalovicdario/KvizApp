@@ -2,6 +2,6 @@
 {
     public interface IAuthentificate
     {
-        bool Authentificate(string nickName, int password);
+        Task<bool> Authentificate(string nickName, string password);
     }
 }

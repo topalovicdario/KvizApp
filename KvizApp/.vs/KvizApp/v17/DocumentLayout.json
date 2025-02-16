@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\creategamesessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\viewmodels\\creategamesessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\answerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\viewmodels\\answerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\bindingquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\bindingquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\onlinegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\onlinegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\iquizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\iquizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\icreatable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\icreatable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\creategamesessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\viewmodels\\creategamesessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\answerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\viewmodels\\answerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,28 +63,12 @@
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\views\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\icreatable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\icreatable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\bindingquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\bindingquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\views\\answerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\views\\answerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\services\\iquizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\services\\iquizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -107,10 +111,6 @@
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|c:\\users\\darke\\onedrive\\desktop\\prog apps\\c#\\kviz_igra\\kvizapp\\kvizapp\\kvizapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{0ADD7074-E9A3-4E66-AE02-8F4BE397F193}|KvizApp\\KvizApp.csproj|solutionrelative:kvizapp\\kvizapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -140,11 +140,179 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateGameSessionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
+              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
+              "RelativeToolTip": "KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T23:55:34.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OnlineGame.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\OnlineGame.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Services\\OnlineGame.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\OnlineGame.cs",
+              "RelativeToolTip": "KvizApp\\Services\\OnlineGame.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAcwEcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T00:42:53.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "KvizApp\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwEgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T23:23:39.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "KvizApp\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAIA6wFkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T01:38:10.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\AuthService.cs",
+              "RelativeToolTip": "KvizApp\\Services\\AuthService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA0wCEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T23:22:16.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ICreatable.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\ICreatable.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Services\\ICreatable.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\ICreatable.cs",
+              "RelativeToolTip": "KvizApp\\Services\\ICreatable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T00:40:51.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IQuizService.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\IQuizService.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Services\\IQuizService.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\IQuizService.cs",
+              "RelativeToolTip": "KvizApp\\Services\\IQuizService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T20:53:31.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BindingQuestions.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\BindingQuestions.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Services\\BindingQuestions.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\BindingQuestions.cs",
+              "RelativeToolTip": "KvizApp\\Services\\BindingQuestions.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwEAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T01:35:40.332Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\User.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\User.cs",
+              "RelativeToolTip": "KvizApp\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T23:21:46.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AnswerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\AnswerViewModel.cs",
+              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\AnswerViewModel.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\AnswerViewModel.cs",
+              "RelativeToolTip": "KvizApp\\ViewModels\\AnswerViewModel.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAD0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:18:46.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\MainPage.xaml",
+              "RelativeDocumentMoniker": "KvizApp\\Views\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\MainPage.xaml",
+              "RelativeToolTip": "KvizApp\\Views\\MainPage.xaml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-05T01:31:19.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AnswerPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\AnswerPage.xaml.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Views\\AnswerPage.xaml.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\AnswerPage.xaml.cs",
+              "RelativeToolTip": "KvizApp\\Views\\AnswerPage.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:17:08.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CreateGameSession.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\CreateGameSession.xaml.cs",
+              "RelativeDocumentMoniker": "KvizApp\\Views\\CreateGameSession.xaml.cs",
+              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\CreateGameSession.xaml.cs",
+              "RelativeToolTip": "KvizApp\\Views\\CreateGameSession.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T00:01:17.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "App.g.i.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
               "RelativeDocumentMoniker": "KvizApp\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
@@ -157,111 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CreateGameSession.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\CreateGameSession.xaml.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Views\\CreateGameSession.xaml.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\CreateGameSession.xaml.cs",
-              "RelativeToolTip": "KvizApp\\Views\\CreateGameSession.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T00:01:17.605Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AnswerPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\AnswerPage.xaml.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Views\\AnswerPage.xaml.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\AnswerPage.xaml.cs",
-              "RelativeToolTip": "KvizApp\\Views\\AnswerPage.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T18:17:08.536Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\MainPage.xaml",
-              "RelativeDocumentMoniker": "KvizApp\\Views\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\MainPage.xaml",
-              "RelativeToolTip": "KvizApp\\Views\\MainPage.xaml",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADIAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-05T01:31:19.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AnswerViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\AnswerViewModel.cs",
-              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\AnswerViewModel.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\AnswerViewModel.cs",
-              "RelativeToolTip": "KvizApp\\ViewModels\\AnswerViewModel.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAD0AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T18:18:46.528Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateGameSessionViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
-              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
-              "RelativeToolTip": "KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:55:34.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OnlineGame.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\OnlineGame.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Services\\OnlineGame.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\OnlineGame.cs",
-              "RelativeToolTip": "KvizApp\\Services\\OnlineGame.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAcwEMAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T00:42:53.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "KvizApp\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAgwEgAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:23:39.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "KvizApp\\ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "KvizApp\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAswIYAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T01:38:10.164Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "LoginPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\LoginPage.xaml.cs",
               "RelativeDocumentMoniker": "KvizApp\\Views\\LoginPage.xaml.cs",
@@ -269,12 +333,11 @@
               "RelativeToolTip": "KvizApp\\Views\\LoginPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:24:51.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T23:24:51.551Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "AnswerPage.xaml",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\AnswerPage.xaml",
               "RelativeDocumentMoniker": "KvizApp\\Views\\AnswerPage.xaml",
@@ -286,43 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ICreatable.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\ICreatable.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Services\\ICreatable.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\ICreatable.cs",
-              "RelativeToolTip": "KvizApp\\Services\\ICreatable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T00:40:51.502Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BindingQuestions.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\BindingQuestions.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Services\\BindingQuestions.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\BindingQuestions.cs",
-              "RelativeToolTip": "KvizApp\\Services\\BindingQuestions.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAkwEgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T01:35:40.332Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\AuthService.cs",
-              "RelativeToolTip": "KvizApp\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:22:16.252Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "KvizApp\\Views\\MainPage.xaml.cs",
@@ -334,19 +361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IQuizService.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\IQuizService.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Services\\IQuizService.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\IQuizService.cs",
-              "RelativeToolTip": "KvizApp\\Services\\IQuizService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T20:53:31.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\MauiProgram.cs",
               "RelativeDocumentMoniker": "KvizApp\\MauiProgram.cs",
@@ -358,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "WindowService.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\WindowService.cs",
               "RelativeDocumentMoniker": "KvizApp\\Services\\WindowService.cs",
@@ -370,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "KvizApp\\Services\\IAuthService.cs",
@@ -382,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "AppShell.xaml.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\AppShell.xaml.cs",
               "RelativeDocumentMoniker": "KvizApp\\AppShell.xaml.cs",
@@ -394,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "JsonServerAnswerQuestion.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\JsonServerAnswerQuestion.cs",
               "RelativeDocumentMoniker": "KvizApp\\Models\\JsonServerAnswerQuestion.cs",
@@ -406,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "LoginPage.xaml",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\LoginPage.xaml",
               "RelativeDocumentMoniker": "KvizApp\\Views\\LoginPage.xaml",
@@ -418,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "CreateGameSession.xaml",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Views\\CreateGameSession.xaml",
               "RelativeDocumentMoniker": "KvizApp\\Views\\CreateGameSession.xaml",
@@ -426,12 +441,11 @@
               "RelativeToolTip": "KvizApp\\Views\\CreateGameSession.xaml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-12T23:40:10.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T23:40:10.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\App.xaml.cs",
               "RelativeDocumentMoniker": "KvizApp\\App.xaml.cs",
@@ -443,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "AppShell.xaml",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\AppShell.xaml",
               "RelativeDocumentMoniker": "KvizApp\\AppShell.xaml",
@@ -455,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Question.cs",
               "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\Question.cs",
               "RelativeDocumentMoniker": "KvizApp\\Models\\Question.cs",
@@ -464,18 +478,6 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAowAcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T01:36:18.296Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\User.cs",
-              "RelativeDocumentMoniker": "KvizApp\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Models\\User.cs",
-              "RelativeToolTip": "KvizApp\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:21:46.716Z"
             },
             {
               "$type": "Document",

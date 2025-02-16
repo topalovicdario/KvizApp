@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KvizApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+57ed18d177bdfc53dadad28cff1b50a040264e40")]
 [assembly: System.Reflection.AssemblyProductAttribute("KvizApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KvizApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
