@@ -5,6 +5,9 @@ using System;
 using System.Text.Json.Serialization;
 using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
+//trenutno radim na izmjeni ovog kontrolera, zelim da ga ukinem i da sve sto se tice pitanja i odgovora prebacim u GameHub 
+//koji radi sa SignalR protokolom i da sve to radi u realnom vremenu 
+
 namespace ServerKVIZ.Controllers
 {
     [ApiController]
@@ -13,7 +16,7 @@ namespace ServerKVIZ.Controllers
     {
         private readonly IServiceProvider serviceProvider;
         
-        private  GameSession gameSession;
+        private  IGameSessionService gameSessionService;
        
         public QuestionsController( IServiceProvider service, GameSession game)
         {

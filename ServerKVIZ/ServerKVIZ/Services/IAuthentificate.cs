@@ -1,6 +1,6 @@
 ﻿namespace ServerKVIZ.Services
 {
-    public interface IAuthentificate
+    public interface IAuthentificatable
     {
         Task<bool> Authentificate(string nickName, string password);
     }

@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "AuthController",
+    "Method": "AuthenticateUser",
+    "RelativePath": "Auth/authMe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AuthController\u002BAuthRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerKVIZ.Controllers.QuestionsController",
     "Method": "GetQuestions",
     "RelativePath": "Questions",
@@ -10,32 +26,6 @@
     "ReturnTypes": [
       {
         "Type": "ServerKVIZ.Models.ClientQuestion",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ServerKVIZ.Controllers.QuestionsController",
-    "Method": "AuthentificateUser",
-    "RelativePath": "Questions/authMe",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "ServerKVIZ.Controllers.AuthRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Boolean",
         "MediaTypes": [
           "text/plain",
           "application/json",

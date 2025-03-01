@@ -156,8 +156,7 @@
               "RelativeToolTip": "KvizApp\\ViewModels\\CreateGameSessionViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:55:34.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T23:55:34.812Z"
             },
             {
               "$type": "Document",
@@ -169,8 +168,7 @@
               "RelativeToolTip": "KvizApp\\Services\\OnlineGame.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAcwEcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T00:42:53.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T00:42:53.475Z"
             },
             {
               "$type": "Document",
@@ -194,8 +192,7 @@
               "RelativeToolTip": "KvizApp\\ViewModels\\MainViewModel.cs",
               "ViewState": "AgIAAGUAAAAAAAAAAIA6wFkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T01:38:10.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T01:38:10.164Z"
             },
             {
               "$type": "Document",
@@ -207,8 +204,7 @@
               "RelativeToolTip": "KvizApp\\Services\\AuthService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA0wCEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:22:16.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T23:22:16.252Z"
             },
             {
               "$type": "Document",
@@ -220,8 +216,7 @@
               "RelativeToolTip": "KvizApp\\Services\\ICreatable.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T00:40:51.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T00:40:51.502Z"
             },
             {
               "$type": "Document",
@@ -233,8 +228,7 @@
               "RelativeToolTip": "KvizApp\\Services\\IQuizService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T20:53:31.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T20:53:31.449Z"
             },
             {
               "$type": "Document",
@@ -244,7 +238,7 @@
               "RelativeDocumentMoniker": "KvizApp\\Services\\BindingQuestions.cs",
               "ToolTip": "C:\\Users\\darke\\OneDrive\\Desktop\\PROG APPS\\c#\\kviz_igra\\KvizApp\\KvizApp\\Services\\BindingQuestions.cs",
               "RelativeToolTip": "KvizApp\\Services\\BindingQuestions.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAkwEcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAowEAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T01:35:40.332Z",
               "EditorCaption": ""
@@ -259,8 +253,7 @@
               "RelativeToolTip": "KvizApp\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:21:46.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T23:21:46.716Z"
             },
             {
               "$type": "Document",
@@ -320,8 +313,7 @@
               "RelativeToolTip": "KvizApp\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAD4v0oAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T21:09:47.407Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T21:09:47.407Z"
             },
             {
               "$type": "Document",

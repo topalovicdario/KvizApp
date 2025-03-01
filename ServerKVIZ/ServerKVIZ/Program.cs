@@ -1,24 +1,48 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using ServerKVIZ.Models;
+using ServerKVIZ.Repositoryes;
 using ServerKVIZ.Services;
+using System.Text;
+
+//nije implementiran do kraja DI za PlayerServices i QuestionServices, i jos neke sitnice :(
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register IHttpClientFactory
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var jwtKey = jwtSettings["Key"];
+var jwtIssuer = jwtSettings["Issuer"];
+
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new InvalidOperationException("nema kljuca!");
+}
+
+
+builder.Services.AddSignalR();
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            ValidateIssuer = true,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+
 builder.Services.AddHttpClient();
-
-// Register IGetQuestions service with TriviaQuestions (make it Transient)
-builder.Services.AddTransient<IGetQuestions, TriviaQuestions>();
-
-// Register DataBaseQuestion as transient (questions are cached)
-builder.Services.AddTransient<DataBaseQuestion>();
+builder.Services.AddTransient<IQuestionRepository, TriviaQuestionsRepository>();
+builder.Services.AddTransient<QuestionServices>();
 builder.Services.AddTransient<GameSession>();
-// Register GameSession as transient (new instance per request)
-
-
-// Register IMemoryCache
 builder.Services.AddMemoryCache();
-builder.Services.AddTransient<OnlineDataBase>();
-
+builder.Services.AddTransient<PlayerRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,7 +55,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+app.UseWebSockets(); 
+
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
+
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<GameHub>("/gamehub");
+});
+
 app.MapControllers();
 app.Run();

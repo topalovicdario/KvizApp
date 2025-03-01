@@ -1,27 +1,45 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Org.BouncyCastle.Asn1.BC;
+using ServerKVIZ.Repositoryes;
 using ServerKVIZ.Services;
 
 namespace ServerKVIZ.Models
 {
     public class GameSession
     {
-        public int Id { get; private set; }
-        public string Category { get; private set; }
-        public string Difficulty { get; private set; }
-        public DataBaseQuestion DataBaseQuestion { get; private set; }
-        public OnlineDataBase OnlineDataBase { get; private set; }
-        public Players player1{ get; private set; }
-        public Players player2 { get; private set; }
+        public int Id { get; set; }
+        public string Category { get;  set; }
+        public string Difficulty { get; set; }
+        
+        public int QuestionNumber { get; set; }
 
-        public GameSession(DataBaseQuestion dataBaseQuestion)
+        public Player player1{ get;  set; }
+        public Player player2 { get;  set; }
+
+
+
+        public GameSession(Player player)
         {
+            player1 = player;
             
 
             Id = Guid.NewGuid().GetHashCode();
+
             
-            DataBaseQuestion = dataBaseQuestion;
         }
+        public void SetParametersOfGame(string category, string difficulty)
+        {   QuestionNumber = 0;
+            Category = category;
+            Difficulty = difficulty;
+        }
+        public void AddPlayer(Player player)
+        {
+            player2 = player;
+        }   
+
+
+        /*
         public void Init(string categ, string difficulty)
         {
 
@@ -48,9 +66,9 @@ namespace ServerKVIZ.Models
         }
         
 
+        */
 
 
 
-
-        }
+    }
 }

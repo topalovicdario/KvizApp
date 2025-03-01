@@ -1,13 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace ServerKVIZ.Models
-{ public class TriviaOutput
-    {
-        [JsonPropertyName("response_code")]
-        public int ResponseCode { get; set; }
-        [JsonPropertyName("results")]
-        public List<Question> Results { get; set; }
-    }
+{
     public class Question
     {public int GenerateId()
         {
