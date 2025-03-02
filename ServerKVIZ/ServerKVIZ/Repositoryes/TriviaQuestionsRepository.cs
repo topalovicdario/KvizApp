@@ -1,6 +1,6 @@
 ﻿// Purpose: Implementation of IQuestionRepository interface. This class is responsible for fetching questions from the
 // Open Trivia Database API and storing them in a list of ClientQuestion objects. It also provides a method for retrieving the list of questions.
-//treba implementirati da se pitanja spremaju u i memory cache ili distriburianom ako smatram da ram moze biti potpuno zaizet i da se dohvacaju iz cachea po sessionId
+
 using ServerKVIZ.Models;
 using System.Net.Http;
 using System.Net;
@@ -22,7 +22,7 @@ namespace ServerKVIZ.Repositoryes
         {
             allQuestions = questionCache;
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("https://opentdb.com/"); // Optional since base address can be set in DI as well
+            _httpClient.BaseAddress = new Uri("https://opentdb.com/");
            
         }
         public void RemoveQuestions(int sessionId)
@@ -57,7 +57,7 @@ namespace ServerKVIZ.Repositoryes
                 categories.Clear();
             }
         }
-        public async Task StoreQuestions(int sessionId, string categ, string difficulty)
+        public async Task StoreQuestions(int sessionId, int categ, int difficulty)
         {   
             
             List<ClientQuestion> questions= new List<ClientQuestion>();

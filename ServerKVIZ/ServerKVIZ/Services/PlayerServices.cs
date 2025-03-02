@@ -4,7 +4,7 @@ using ServerKVIZ.Repositoryes;
 
 namespace ServerKVIZ.Services
 {
-    public class PlayerServices : IAuthentificatable
+    public class PlayerServices : IAuthentificatable, IPlayerServices
     {
         private IPlayerRepository playerRepository;
 
@@ -27,6 +27,10 @@ namespace ServerKVIZ.Services
             {
                 return false;
             }
+        }
+        public Player GetPlayerById(string playerId)
+        {
+            return playerRepository.GetPlayerById(playerId);
         }
     
     }

@@ -1,124 +1,253 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using MySqlX.XDevAPI;
 using ServerKVIZ.Models;
+using ServerKVIZ.Repositoryes;
+using System.Collections.Concurrent;
 
 namespace ServerKVIZ.Services
 {
-    public class GameSessionServices
+    public class GameSessionServices: IGameSessionService
     {
+        private readonly IMemoryCache roundStatus;
+        private readonly IDictionary<int,int> numberOfAnswers;
         private readonly string gameSessionCacheKeyPrefix = "GameSession_";
         private readonly IQuestionService questionService;
         private readonly IMemoryCache gameSessionsCache;
-        public GameSessionServices(QuestionServices questionService, IMemoryCache gameSessionsCache)
+        private readonly ConcurrentDictionary<string, int> playerToSessionMap;
+        private readonly IPlayerServices playerServices;
+        public GameSessionServices(IQuestionService questionService, IMemoryCache gameSessionsCache, IPlayerServices playerServices,IMemoryCache roundStatus)
         {
             this.gameSessionsCache = gameSessionsCache;
             this.questionService = questionService;
+            this.playerServices = playerServices;
+            this.roundStatus = roundStatus;
+            this.numberOfAnswers = new Dictionary<int, int>();
+
+            playerToSessionMap = new ConcurrentDictionary<string, int>();
         }
-        public async Task CreateGameSession(string category, string difficulty, Player player1)
+        public async Task<GameSession> CreateGameSession( string  playerId)
         {
-            var gameSession = new GameSession(player1);
+            var gameSession = new GameSession(playerServices.GetPlayerById(playerId)); //potencijalno ovdje prosljediti iz PlayerServica metodu koja ce iz baze vratiti
+            //tog korisnika sa svim njegovim atributima -id itd...
             var cacheKey = gameSessionCacheKeyPrefix + gameSession.Id;
+
+            
             gameSessionsCache.Set(cacheKey, gameSession);
 
            
-            await questionService.StoreQuestions(gameSession.Id, category, difficulty);
+            playerToSessionMap[playerServices.GetPlayerById(playerId).NickName] = gameSession.Id;
+
+            return gameSession;
         }
-        public void SetParametersOfGameSession(string sessionId, string categ, string difficulty)
-        { 
+        public void SetParametersOfGameSession(string playerId, int categ, int difficulty)
+        {
+            int sessionId = GetSessionIdForUser(playerId);
             if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
             {
                 gameSession.SetParametersOfGame(categ, difficulty);
+                questionService.StoreQuestions(gameSession.Id, categ, difficulty);
                 
             }
             
 
 
         }
-        public bool JoinGameSession(string sessionId, Player player2)
+        public bool JoinGameSession(string playerId, string player2Id)
         {
+            int sessionId = GetSessionIdForUser(playerId);
             var cacheKey = gameSessionCacheKeyPrefix + sessionId;
             if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
             {
                 if (gameSession.player2 == null)
                 {
-                    gameSession.AddPlayer(player2);
+                    gameSession.AddPlayer(playerServices.GetPlayerById(player2Id));
                     gameSessionsCache.Set(cacheKey, gameSession);
+                    
+                    
+                    playerToSessionMap[playerServices.GetPlayerById(player2Id).NickName] = gameSession.Id;
+
                     return true;
                 }
             }
             return false;
         }
-        public void RemoveGameSession(int sessionId)
-        {   gameSessionsCache.Remove(gameSessionCacheKeyPrefix + sessionId);
+        public void RemoveGameSession(string playerId)
+        {
+            int sessionId = GetSessionIdForUser(playerId);
+            var cacheKey = gameSessionCacheKeyPrefix + sessionId;
+
+            if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
+            {
+                
+                playerToSessionMap.TryRemove(gameSession.player1.NickName, out _);
+
+                if (gameSession.player2 != null)
+                {
+                    playerToSessionMap.TryRemove(gameSession.player2.NickName, out _);
+                }
+            }
+
+            gameSessionsCache.Remove(cacheKey);
             questionService.RemoveQuestions(sessionId);
 
         }
-        public async Task<ActionResult<ClientQuestion>> GetNextQuestion(int sessionId)
+        public async Task<ActionResult<ClientQuestion>> GetNextQuestion(string playerId)
         {
+            int sessionId = GetSessionIdForUser(playerId);
             return await questionService.GetNextQuestion(sessionId);
         }
 
-        public AnswerResultJson CheckAnswerForQuestion(int playerId,int sessionId,int questionId,int index)
+        public void SubmitAnswerToQuestion(string playerId,int questionId,int index) //ovo samo pohrani u klasu stanja rezultata 
         {
-            var cacheKey = gameSessionCacheKeyPrefix + sessionId; //treba ovo odvojit u posebnu metodu tako da bude lakse postavljanje novog nacina dodjele prefiksa ali nek ostane sad ovako
-            var question = questionService.GetQuestionById(sessionId, questionId);
             
+            
+            int sessionId = GetSessionIdForUser(playerId);
+            var cacheKey = gameSessionCacheKeyPrefix +sessionId ; //treba ovo odvojit u posebnu metodu tako da bude lakse postavljanje novog nacina dodjele prefiksa ali nek ostane sad ovako
+            var question = questionService.GetQuestionById(sessionId, questionId);
+            numberOfAnswers[sessionId]++;
             if (question == null)
             {
                 throw new ArgumentException("Nema tog pitanja u bazu");
             }
-            var isCorrect = false;
-            var correctAnswer = question.CorrectAnswer;
-            var playerScore=0;
+            
             
             if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
             {
-                if (gameSession.player1.Id == playerId)
+                roundStatus.TryGetValue<RoundResult>(playerId, out var roundResult);
+
+                if (gameSession.player1.NickName == playerId)
                 {
-                    playerScore = gameSession.player1.Score;
+                    if (question.AllAnswers[index] == question.CorrectAnswer)
+                    {
+                        gameSession.player1.Score++;
+                        roundResult.PlayerScore = gameSession.player1.Score;
+                        roundResult.IsAnswerCorrect = true;
+                    }
+                    else
+                    {
+                        roundResult.IsAnswerCorrect =false;
+                    }
                     
                     
                 }
-                else if (gameSession.player2.Id == playerId)
+                else if (gameSession.player2.NickName == playerId)
                 {
-                    playerScore = gameSession.player2.Score;
-                    
+                    if (question.AllAnswers[index] == question.CorrectAnswer)
+                    {
+                        gameSession.player2.Score++;
+                        roundResult.PlayerScore=gameSession.player2.Score;
+                    }
+                    else
+                    {
+                        roundResult.IsAnswerCorrect = false;
+                    }
+
 
                 }
+                gameSession.QuestionNumber++;
+                
+                roundResult.QuestionNumber=gameSession.QuestionNumber;
             }
            //koncept je preuzak, problem pri dodavanju vise igraca (ukoliko ostaje dualnog tipa onda je uredu ovaj pristup (1v1))
 
-            if (question.CorrectAnswer == question.AllAnswers[index])
-            {
-                playerScore++;
-                isCorrect = true;
+            
+            
 
-            }
-            else
-            {
-                isCorrect = false;
-            }
-
-            return new AnswerResultJson(isCorrect,correctAnswer, playerScore);
+            
 
 
 
         }
-        public GameSessionStatusResponse GetGameSessionStatus(int sessionId)
+        public bool ArePlayersDone(string playerId)
         {
+            int sessionId = GetSessionIdForUser(playerId);
+            return numberOfAnswers[sessionId] == 2;
+        }
+
+        public RoundResult GetResultsAfterQuestion(string playerId)
+        { int sessionId = GetSessionIdForUser(playerId);
             var cacheKey = gameSessionCacheKeyPrefix + sessionId;
-            var player1Score = 0;
-            var player2Score = 0;
-            var questionNumber = 0;
+            
             if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
             {
-                return new GameSessionStatusResponse(gameSession.player1.Score, gameSession.player2.Score, gameSession.QuestionNumber);
+
+                var player= playerServices.GetPlayerById(playerId);
+                
+                    roundStatus.TryGetValue<RoundResult>(playerId, out var roundResult);
+                    return roundResult;
+               
+                    
+                
+               //vrati odgovor -da li je tocan odgovor, tocan odgovor, stanje scora i koje je pitanje po redu to bilo.
+               //ako je prvi igrac vrati tako da enemy bude player 2 i obrnuto
             }
             else
             {
                 throw new ArgumentException("Nema te sesije");
             }
         }
-        
+
+        public int GetSessionIdForUser(string playerId)
+        {
+            
+            if (playerToSessionMap.TryGetValue(playerId, out var sessionId))
+            {
+                
+                if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
+                {
+                   
+                    if (gameSession.player1.NickName == playerId || (gameSession.player2 != null && gameSession.player2.NickName == playerId))
+                    {
+                        return gameSession.Id;
+                    }
+                    else
+                    {
+                       
+                        playerToSessionMap.TryRemove(playerId, out _);
+                    }
+                }
+                else
+                {
+                    
+                    playerToSessionMap.TryRemove(playerId, out _);
+                }
+            }
+
+           return 0; 
+        }
+        public GameSession GetSessionForUser(string playerId) //iznimno suvisno, vec imas funkciju koja vraca samo id (nekad objedini u jednu)
+        {
+
+            if (playerToSessionMap.TryGetValue(playerId, out var sessionId))
+            {
+
+                if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
+                {
+
+                    if (gameSession.player1.NickName == playerId || (gameSession.player2 != null && gameSession.player2.NickName == playerId))
+                    {
+                        return gameSession;
+                    }
+                    else
+                    {
+
+                        playerToSessionMap.TryRemove(playerId, out _);
+                    }
+                }
+                else
+                {
+
+                    playerToSessionMap.TryRemove(playerId, out _);
+                }
+            }
+
+            return null;
+        }
+
+        public void RemovePlayerFromSession(string playerId)
+        {
+            playerToSessionMap.TryRemove(playerId, out _);
+        }
     }
 }

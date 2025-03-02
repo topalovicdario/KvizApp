@@ -5,7 +5,7 @@ namespace ServerKVIZ.Services
 {
     public interface IQuestionService
     {
-        public  Task StoreQuestions(int sessionId,string categ, string difficulty);
+        public  Task StoreQuestions(int sessionId,int categ, int difficulty);
         public  Task<ActionResult<ClientQuestion>> GetNextQuestion(int sessionId);
         public ClientQuestion GetQuestionById(int sessionId, int questionId);
         public bool CheckAnswer(int sessionId,int questionId, string clientAnswer);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServerKVIZ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6437ddb9a385b6f5ccd8ddbae68dcf957b03b8a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bf5491c7903cc01982c2d686a57b77c360f7521")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServerKVIZ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServerKVIZ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

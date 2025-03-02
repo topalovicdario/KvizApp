@@ -7,5 +7,6 @@ namespace ServerKVIZ.Repositoryes
         public List<Player> GetAllPlayers();
         public  Task StorePlayers();
         public Player GetPlayerByIndex(int index);
+        public Player GetPlayerById(string playerId);//glup si zbog ovog, getbyname treba
     }
 }

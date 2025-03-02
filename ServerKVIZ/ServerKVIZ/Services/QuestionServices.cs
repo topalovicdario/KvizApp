@@ -1,5 +1,5 @@
-﻿//imlementirati da sve operacije izvode po session id koji je i u question repozirotirju
-//answered_questions isto u imemory cache je stavljen ali treba jos odraditi logiku za spremanje po sessionid
+﻿
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using MySqlX.XDevAPI;
@@ -37,7 +37,7 @@ namespace ServerKVIZ.Services
 
         }
 
-        public async Task StoreQuestions(int sessionId, string categ, string difficulty)
+        public async Task StoreQuestions(int sessionId, int categ, int difficulty)
         {
             var cacheKey = CacheKeyPrefix + sessionId;
 

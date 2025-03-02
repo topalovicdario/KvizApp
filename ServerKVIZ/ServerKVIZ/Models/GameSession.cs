@@ -9,8 +9,8 @@ namespace ServerKVIZ.Models
     public class GameSession
     {
         public int Id { get; set; }
-        public string Category { get;  set; }
-        public string Difficulty { get; set; }
+        public int Category { get;  set; }
+        public int Difficulty { get; set; }
         
         public int QuestionNumber { get; set; }
 
@@ -28,7 +28,7 @@ namespace ServerKVIZ.Models
 
             
         }
-        public void SetParametersOfGame(string category, string difficulty)
+        public void SetParametersOfGame(int category, int difficulty)
         {   QuestionNumber = 0;
             Category = category;
             Difficulty = difficulty;

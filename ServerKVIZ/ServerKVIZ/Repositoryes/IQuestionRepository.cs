@@ -4,7 +4,7 @@ namespace ServerKVIZ.Repositoryes
 {
     public interface IQuestionRepository
     {
-        Task StoreQuestions(int sessionId, string categ, string dificulty);
+        Task StoreQuestions(int sessionId, int categ,int dificulty);
         List<ClientQuestion> GetQuestions(int sessionId);
         public List<Category> GetCategories();
         public Task StoreCategories();

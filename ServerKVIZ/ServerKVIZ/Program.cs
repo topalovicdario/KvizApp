@@ -36,14 +36,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddMemoryCache();
 
+builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddTransient<IQuestionRepository, TriviaQuestionsRepository>();
-builder.Services.AddTransient<QuestionServices>();
-builder.Services.AddTransient<GameSession>();
-builder.Services.AddMemoryCache();
-builder.Services.AddTransient<PlayerRepository>();
-builder.Services.AddControllers();
+builder.Services.AddTransient<IQuestionService,QuestionServices>();
+builder.Services.AddTransient<IPlayerRepository,PlayerRepository>();
+builder.Services.AddTransient<IPlayerServices,PlayerServices>();
+builder.Services.AddTransient<IGameSessionService,GameSessionServices>();
+builder.Services.AddTransient<IAuthentificatable,PlayerServices>();
+
+
+
+
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
