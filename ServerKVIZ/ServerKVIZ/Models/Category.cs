@@ -13,5 +13,6 @@ namespace ServerKVIZ.Models
             Id = id;
             Name = name;
         }
+        public Category() { }
     }
 }

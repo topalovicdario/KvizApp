@@ -34,6 +34,7 @@ namespace ServerKVIZ.Repositoryes
         }
         public Player GetPlayerById(string playerId)
         {
+            
             return players.Where(p => p.NickName == playerId).FirstOrDefault() ;
         }
         public async Task StorePlayers()

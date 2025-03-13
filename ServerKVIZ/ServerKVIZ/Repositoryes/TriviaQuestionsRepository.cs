@@ -7,6 +7,7 @@ using System.Net;
 using System.Reflection;
 using ServerKVIZ.Services;
 using Microsoft.Extensions.Caching.Memory;
+using System.Security.AccessControl;
 
 namespace ServerKVIZ.Repositoryes
 {
@@ -23,11 +24,14 @@ namespace ServerKVIZ.Repositoryes
             allQuestions = questionCache;
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri("https://opentdb.com/");
+            categories = new List<Category>();
            
         }
         public void RemoveQuestions(int sessionId)
         {
+            
             var cacheKey = CacheKeyPrefix + sessionId;
+            allQuestions.Set(cacheKey, new List<ClientQuestion>());
             allQuestions.Remove(cacheKey);
         }
         public List<Category> GetCategories()
@@ -58,53 +62,84 @@ namespace ServerKVIZ.Repositoryes
             }
         }
         public async Task StoreQuestions(int sessionId, int categ, int difficulty)
-        {   
+        {
+
             
-            List<ClientQuestion> questions= new List<ClientQuestion>();
+            string difficultyToString = "";
+            if (difficulty == 1)
+            {
+                difficultyToString = "easy";
+            }else if (difficulty == 2)
+            {
+
+                difficultyToString = "medium";
+
+            }
+            else
+            {
+                difficultyToString = "hard";
+            }
              var cacheKey = CacheKeyPrefix + sessionId;
-
-            var url = "https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple";
-
+            
+            var url = $"https://opentdb.com/api.php?amount=50&category={categ}&difficulty={difficultyToString}&type=multiple";
+            
             try
             {
                 var response = await _httpClient.GetFromJsonAsync<TriviaQuestionApi>(url);
                 if (response?.Questions == null || response.ResponseCode != 0)
                 {
                     Console.WriteLine($"Prilikom povlacenja pitanja doslo je do greske: {response?.ResponseCode}");
-                    questions.Clear(); 
+                    allQuestions.Set(cacheKey, new List<ClientQuestion>());
                     return;
                 }
 
-               
-                questions = response.Questions.Select(q => new ClientQuestion(
+                // Create questions with deduplication (only once)
+                var questions = response.Questions
+                    .Select(q => new ClientQuestion(
                         q.GenerateId(),
                         WebUtility.HtmlDecode(q.Text),
                         WebUtility.HtmlDecode(q.CorrectAnswer),
                         new List<string> { WebUtility.HtmlDecode(q.CorrectAnswer) }
                             .Concat(q.IncorrectAnswers.Select(ia => WebUtility.HtmlDecode(ia)))
-                            .OrderBy(a => Guid.NewGuid()) //randomizacija odgovora, tako da tocan odgovor u listi mijenja mjesto svaki put
+                            .OrderBy(a => Guid.NewGuid()) // Randomize correct answer position
                             .ToList(),
                         q.Category,
                         q.Difficulty
-                    )).ToList();
-                allQuestions.Set(cacheKey, questions);
+                    ))
+                    .GroupBy(q => q.Text)
+                    .Select(g => g.First())
+                    .ToList();
 
+                Console.WriteLine($"Storing {questions.Count} questions in cache with key: {cacheKey}");
+                
+
+                // Store questions with a specific cache duration and absolute expiration
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(30))
+                    .SetAbsoluteExpiration(TimeSpan.FromHours(2));
+
+                allQuestions.Set(cacheKey, questions, cacheOptions);
             }
             catch (Exception ex)
             {
-                
                 Console.WriteLine($"Greska u pohrani pitanja: {ex.Message}");
-                questions.Clear();
+                allQuestions.Set(cacheKey, new List<ClientQuestion>());
             }
-            questions = questions
-                 .GroupBy(q => q.Text)         
-                 .Select(g => g.First())        
-                 .ToList();
         }
         public List<ClientQuestion> GetQuestions(int sessionId)
         {
             var cacheKey = CacheKeyPrefix + sessionId;
-            return allQuestions.Get<List<ClientQuestion>>(cacheKey).ToList();
+           
+
+            if (allQuestions.TryGetValue(cacheKey, out List<ClientQuestion> questions))
+            {
+              
+                Console.WriteLine($"Retrieved {questions.Count} questions for session {sessionId}");
+                return questions;
+            }
+
+           
+            return new List<ClientQuestion>();
         }
     }
 }

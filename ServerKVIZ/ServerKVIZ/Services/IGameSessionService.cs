@@ -14,11 +14,12 @@ namespace ServerKVIZ.Services
         public bool ArePlayersDone(string playerId);
         public void SubmitAnswerToQuestion(string playerId, int questionId, int index);
 
-        public Task<ActionResult<ClientQuestion>> GetNextQuestion(string playerId);
+        public Task<List<Category>> GetCategories();
+        public Task<ClientQuestion> GetNextQuestion(string playerId);
         public bool JoinGameSession(string playerId, string player2);
         public void SetParametersOfGameSession(string playerId,int categ, int difficulty);
         public Task<GameSession> CreateGameSession( string player1Id);
-
+        public bool IsGameOver(string playerId);
 
     }
 }

@@ -25,6 +25,11 @@ namespace ServerKVIZ.Services
            
 
         }
+        public async Task<List<Category>> GetCategories()
+        {
+            await database.StoreCategories();
+            return database.GetCategories();
+        }
         public void RemoveQuestions(int sessionId)
         {
             var cacheKey = CacheKeyPrefix + sessionId;
@@ -48,13 +53,13 @@ namespace ServerKVIZ.Services
             // questionsCache.Set(cacheKey, questions);  
         }
 
-        public async Task<ActionResult<ClientQuestion>> GetNextQuestion(int sessionId)
+        public async Task<ClientQuestion> GetNextQuestion(int sessionId)
         {
             var cacheKey = CacheKeyPrefix + sessionId;
             var allQuestions = database.GetQuestions(sessionId);
 
             if (allQuestions == null || !allQuestions.Any())
-                return new NotFoundResult();
+                return null;
 
             
             List<ClientQuestion> answeredQuestions;
@@ -72,7 +77,7 @@ namespace ServerKVIZ.Services
                 .ToList();
 
             if (!unansweredQuestions.Any())
-                return new NotFoundResult();  
+                return null;
 
             Random random = new Random();
             int index = random.Next(0, unansweredQuestions.Count);

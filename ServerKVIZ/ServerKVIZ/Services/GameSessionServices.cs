@@ -22,12 +22,14 @@ namespace ServerKVIZ.Services
             this.questionService = questionService;
             this.playerServices = playerServices;
             this.roundStatus = roundStatus;
-            this.numberOfAnswers = new Dictionary<int, int>();
+            this.numberOfAnswers = new Dictionary<int,int>();
 
             playerToSessionMap = new ConcurrentDictionary<string, int>();
         }
         public async Task<GameSession> CreateGameSession( string  playerId)
         {
+            
+            
             var gameSession = new GameSession(playerServices.GetPlayerById(playerId)); //potencijalno ovdje prosljediti iz PlayerServica metodu koja ce iz baze vratiti
             //tog korisnika sa svim njegovim atributima -id itd...
             var cacheKey = gameSessionCacheKeyPrefix + gameSession.Id;
@@ -36,16 +38,24 @@ namespace ServerKVIZ.Services
             gameSessionsCache.Set(cacheKey, gameSession);
 
            
-            playerToSessionMap[playerServices.GetPlayerById(playerId).NickName] = gameSession.Id;
-
+            playerToSessionMap[playerId] = gameSession.Id;
+            
+            
             return gameSession;
         }
         public void SetParametersOfGameSession(string playerId, int categ, int difficulty)
         {
+            
             int sessionId = GetSessionIdForUser(playerId);
+            
             if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
             {
+                questionService.RemoveQuestions(sessionId);
                 gameSession.SetParametersOfGame(categ, difficulty);
+                gameSession.QuestionNumber = 0;
+                gameSession.player1.Score = 0;
+                gameSession.player2.Score = 0;
+
                 questionService.StoreQuestions(gameSession.Id, categ, difficulty);
                 
             }
@@ -92,10 +102,11 @@ namespace ServerKVIZ.Services
             questionService.RemoveQuestions(sessionId);
 
         }
-        public async Task<ActionResult<ClientQuestion>> GetNextQuestion(string playerId)
+        public async Task<ClientQuestion> GetNextQuestion(string playerId)
         {
-            int sessionId = GetSessionIdForUser(playerId);
-            return await questionService.GetNextQuestion(sessionId);
+            var session = GetSessionForUser(playerId);
+            
+            return await questionService.GetNextQuestion(session.Id);
         }
 
         public void SubmitAnswerToQuestion(string playerId,int questionId,int index) //ovo samo pohrani u klasu stanja rezultata 
@@ -105,15 +116,31 @@ namespace ServerKVIZ.Services
             int sessionId = GetSessionIdForUser(playerId);
             var cacheKey = gameSessionCacheKeyPrefix +sessionId ; //treba ovo odvojit u posebnu metodu tako da bude lakse postavljanje novog nacina dodjele prefiksa ali nek ostane sad ovako
             var question = questionService.GetQuestionById(sessionId, questionId);
-            numberOfAnswers[sessionId]++;
+            if (!numberOfAnswers.ContainsKey(sessionId))
+            {
+                
+                    numberOfAnswers[sessionId] = 0;
+            }
+            
+
+           
             if (question == null)
             {
                 throw new ArgumentException("Nema tog pitanja u bazu");
             }
             
-            
+             numberOfAnswers[sessionId]+=1;
             if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
             {
+                if (numberOfAnswers[sessionId] == 3)//popravit ovu logiku ovo negdje drugo odradit
+                {
+                    numberOfAnswers[sessionId]=1;
+                }
+                if (numberOfAnswers[sessionId] == 1)
+                {
+                    gameSession.QuestionNumber++;
+                }
+                roundStatus.Set(playerId, new RoundResult());
                 roundStatus.TryGetValue<RoundResult>(playerId, out var roundResult);
 
                 if (gameSession.player1.NickName == playerId)
@@ -126,6 +153,8 @@ namespace ServerKVIZ.Services
                     }
                     else
                     {
+                       
+                        roundResult.PlayerScore = gameSession.player1.Score;
                         roundResult.IsAnswerCorrect =false;
                     }
                     
@@ -133,21 +162,27 @@ namespace ServerKVIZ.Services
                 }
                 else if (gameSession.player2.NickName == playerId)
                 {
+                    
                     if (question.AllAnswers[index] == question.CorrectAnswer)
                     {
                         gameSession.player2.Score++;
                         roundResult.PlayerScore=gameSession.player2.Score;
+                        roundResult.IsAnswerCorrect = true;
                     }
                     else
                     {
+                        roundResult.PlayerScore = gameSession.player2.Score;
                         roundResult.IsAnswerCorrect = false;
                     }
 
 
                 }
-                gameSession.QuestionNumber++;
+                Console.WriteLine("\n Score "+gameSession.player1.Score+":"+gameSession.player2.Score+ "\n");
+               
+                
                 
                 roundResult.QuestionNumber=gameSession.QuestionNumber;
+                roundResult.CorrectAnswer = question.CorrectAnswer;
             }
            //koncept je preuzak, problem pri dodavanju vise igraca (ukoliko ostaje dualnog tipa onda je uredu ovaj pristup (1v1))
 
@@ -162,19 +197,35 @@ namespace ServerKVIZ.Services
         public bool ArePlayersDone(string playerId)
         {
             int sessionId = GetSessionIdForUser(playerId);
-            return numberOfAnswers[sessionId] == 2;
+            Console.WriteLine("Odgovorilo je : "
+                                                   + numberOfAnswers[sessionId]);
+            return numberOfAnswers[sessionId] ==2;
         }
 
-        public RoundResult GetResultsAfterQuestion(string playerId)
+        public RoundResult GetResultsAfterQuestion(string playerId)//ispraviti metodu da 
         { int sessionId = GetSessionIdForUser(playerId);
             var cacheKey = gameSessionCacheKeyPrefix + sessionId;
             
             if (gameSessionsCache.TryGetValue<GameSession>(cacheKey, out var gameSession))
             {
+                
 
                 var player= playerServices.GetPlayerById(playerId);
                 
                     roundStatus.TryGetValue<RoundResult>(playerId, out var roundResult);
+                
+                if (gameSession.player1.NickName == playerId)
+                {
+                    roundResult.EnemyScore=gameSession.player2.Score;
+                }
+                else
+                {
+                    roundResult.EnemyScore = gameSession.player1.Score;
+
+                }
+
+                //jako lose implementirana logika za dobijanje protivnikovog scora, potrebna popravka ove logike,
+                //enemy score i gotov roundresult objekt treba biti odradjen u drugoj funkiciji koju cemo ovdje pozvati
                     return roundResult;
                
                     
@@ -193,7 +244,7 @@ namespace ServerKVIZ.Services
             
             if (playerToSessionMap.TryGetValue(playerId, out var sessionId))
             {
-                
+               
                 if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
                 {
                    
@@ -214,14 +265,18 @@ namespace ServerKVIZ.Services
                 }
             }
 
-           return 0; 
+           return 0;
+        }
+        public async Task<List<Category>> GetCategories()
+        {
+            return await questionService.GetCategories();
         }
         public GameSession GetSessionForUser(string playerId) //iznimno suvisno, vec imas funkciju koja vraca samo id (nekad objedini u jednu)
         {
-
+           
             if (playerToSessionMap.TryGetValue(playerId, out var sessionId))
             {
-
+               
                 if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
                 {
 
@@ -239,10 +294,38 @@ namespace ServerKVIZ.Services
                 {
 
                     playerToSessionMap.TryRemove(playerId, out _);
+
+
                 }
             }
 
             return null;
+        }
+        public bool IsGameOver(string playerId)
+        {
+            if (playerToSessionMap.TryGetValue(playerId, out var sessionId))
+            {
+
+                if (gameSessionsCache.TryGetValue<GameSession>(gameSessionCacheKeyPrefix + sessionId, out var gameSession))
+                {
+                    if (gameSession.QuestionNumber == 2)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void RemovePlayerFromSession(string playerId)

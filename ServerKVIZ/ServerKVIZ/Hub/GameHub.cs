@@ -6,26 +6,31 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Threading.Tasks;
-//jos uvijek u postupku implementacije, zanemarite ovaj kod
+//potrebno testirati ovo
 
 [Authorize]
 public class GameHub : Hub
 {
-    
+   
 
     public readonly IGameSessionService gameSessionService;
 
-  
+    private static Timer timer;
     private static  ConcurrentDictionary<string, string> activePlayers ;
     public GameHub(IGameSessionService gameSessionService)
     {
         this.gameSessionService = gameSessionService;
         activePlayers = new ConcurrentDictionary<string, string>();
+        
     }
     public override async Task OnConnectedAsync()
     {
+       
+      
+        
         // Dohvaćanje korisničkog imena iz tokena
         var userName = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
         if (!string.IsNullOrEmpty(userName))
@@ -33,6 +38,7 @@ public class GameHub : Hub
             // Spremanje aktivnog korisnika. Ključom je ConnectionId, a vrijednost je korisničko ime.
             activePlayers[Context.ConnectionId] = userName;
         }
+        
         var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
 
         // Kreiranje osobnog lobija za korisnika
@@ -42,10 +48,10 @@ public class GameHub : Hub
         await Groups.AddToGroupAsync(Context.ConnectionId, gameSession.Id.ToString());
 
         // Obavijest korisniku da je povezan i da ima svoj lobby
-        Console.WriteLine($"Korisnik {userName} spojen s Connection ID: {Context.ConnectionId}");
+        
         await Clients.Caller.SendAsync("LobbyCreated", gameSession.Id);
-
-
+        await GetActiveUsers();
+        Console.WriteLine("Kreirao si sesiju: "+gameSession.Id+" ,host name : "+gameSession.player1.NickName);
         await base.OnConnectedAsync();
     }
 
@@ -53,8 +59,8 @@ public class GameHub : Hub
     {
         // Uklanjanje korisnika iz liste aktivnih pri prekidu konekcije
        activePlayers.TryRemove(Context.ConnectionId, out var userName);
-        Console.WriteLine($"Korisnik {userName} prekinuo konekciju: {Context.ConnectionId}");
-        await base.OnDisconnectedAsync(exception);
+       
+       
 
 
 
@@ -76,45 +82,51 @@ public class GameHub : Hub
             gameSessionService.RemovePlayerFromSession(userId);
         }
 
-        await base.OnDisconnectedAsync(exception);
+        
 
         Console.WriteLine($"Korisnik {userName} prekinuo konekciju i uklonjen iz grupa.");
+       
         await base.OnDisconnectedAsync(exception);
     }
 
- 
-    public Task<List<string>> GetActiveUsers()
+
+    public async Task GetActiveUsers()
     {
-        // Vraća listu jedinstvenih imena iz ActiveUsers kolekcije
+        // Pravimo listu jedinstvenih imena igrača
         var users = activePlayers.Values.Distinct().ToList();
-        return Task.FromResult(users);
+
+        // Ispis u konzolu za proveru
+        Console.WriteLine("Aktivni igrači: " +string.Join(" ",users));
+
+        // Slanje liste svih aktivnih igrača svim klijentima
+        await Clients.All.SendAsync("ActivePlayers", users);
+
+        
     }
+    public async Task GetCategories()
+    {
+        var categories = await gameSessionService.GetCategories();
+        await Clients.All.SendAsync("GetCategories", categories);
+    }
+
+
+
    
-
-    public async Task StartGame(int category, int difficulty)
-    { var adminId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
-        var gameSession= gameSessionService.GetSessionForUser(adminId);
-        gameSessionService.SetParametersOfGameSession(adminId, category, difficulty);
-        
-
-        
-        await Groups.AddToGroupAsync(Context.ConnectionId, gameSession.Id.ToString());
-
-        Console.WriteLine($"Kreator igre dodan u grupu: {gameSession.Id.ToString()}");
-    }
     public async Task InvitePlayer(string invitedPlayerId)
     {
+       
         var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
-
+        Console.WriteLine($"Invite player {invitedPlayerId}");
 
         var hostGameSession = gameSessionService.GetSessionForUser(userId);
-
+        Console.WriteLine("Gamesesija " + hostGameSession.Id+ ", ciji je host "+hostGameSession.player1.NickName);
        
         await Clients.User(invitedPlayerId).SendAsync("GameInvitation",
             new { HostId = userId, SessionId = hostGameSession.Id });
     }
     public async Task AcceptInvitation(string hostPlayerId)
     {
+        
         var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
 
         // Napuštanje trenutne sesije
@@ -124,17 +136,21 @@ public class GameHub : Hub
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, currentSession.Id.ToString());
             gameSessionService.RemovePlayerFromSession(userId);
         }
-        var   sessionId = gameSessionService.GetSessionIdForUser(userId);
+        var   session = gameSessionService.GetSessionForUser(hostPlayerId);
+        Console.WriteLine("Prihvacen invite od "+userId+" za game invite od "+hostPlayerId +", stoga je dodan u lobby "+
+            session.Id.ToString());
         // Pridruživanje novoj sesiji
          gameSessionService.JoinGameSession(hostPlayerId,userId);
-        await Groups.AddToGroupAsync(Context.ConnectionId, sessionId.ToString());
+        await Groups.AddToGroupAsync(Context.ConnectionId, session.Id.ToString());
 
         // Obavijest svima u grupi da se pridružio novi igrač
-        await Clients.Group(sessionId.ToString()).SendAsync("PlayerJoined", userId);
+        await Clients.Group(session.Id.ToString()).SendAsync("PlayerJoined", userId);
     }
     //
-    public async Task SetGameParameters(int difficulty, int category)
+    public async Task SetGameParameters( int category,int difficulty)
     {
+        Console.WriteLine($"{category} {difficulty}");
+       
         var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
 
         // Dobivanje sesije
@@ -148,8 +164,10 @@ public class GameHub : Hub
 
             // Obavještava sve igrače o promjeni parametara
             await Clients.Group(session.Id.ToString())
-                .SendAsync("GameParametersSet", new { Difficulty = difficulty, Category = category });
+                .SendAsync("GameParametersSet", "Dodani parametri");
+            
         }
+    
         else
         {
             // Korisnik nije admin, ne može mijenjati parametre
@@ -157,24 +175,37 @@ public class GameHub : Hub
         }
     }
     public async Task SendNextQuestion()
+
+
     {
-        var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
-        var session = gameSessionService.GetSessionForUser(userId);
-        var question = await gameSessionService.GetNextQuestion(Context.User.Identity.Name);
-        if (question != null)
+       
+        var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value; 
+        
+        if (!await GameOver(userId))
         {
+var session = gameSessionService.GetSessionForUser(userId);
+        var question = await gameSessionService.GetNextQuestion(userId);
+       
+            if (question != null)
+        {
+            Console.WriteLine(question.Text);
             await Clients.Group(session.Id.ToString()).SendAsync("ReceiveQuestion", question);
         }
+        }
+        
     }
-    public async Task SendResultAfterRound( int questionId, int answerIndex)
+    public async Task SendResultAfterRound( )
     {
         var userId = Context.User?.FindFirst(ClaimTypes.Name)?.Value;
         var session = gameSessionService.GetSessionForUser(userId);
         while (!gameSessionService.ArePlayersDone(userId))
         {
-          
+            Console.WriteLine("nisu svi jos odgovorili");
         }
-        await Clients.User(userId).SendAsync("ReceiveAnswer", gameSessionService.GetResultsAfterQuestion(userId));
+        
+        Console.WriteLine("ovo saljem kljijentu: "+gameSessionService.GetResultsAfterQuestion(userId).PlayerScore +":"+gameSessionService.GetResultsAfterQuestion(userId).EnemyScore);
+        
+        await Clients.Caller.SendAsync("ReceiveAnswer", gameSessionService.GetResultsAfterQuestion(userId));
 
     }
     public async Task SubmitAnswer( int questionId, int answerIndex)
@@ -185,10 +216,24 @@ public class GameHub : Hub
         await Clients.Caller.SendAsync("Error", "odgovor primljen i obradjen, cekamo drugog igraca");
     }
  
-    public  bool IsGameOver()
+    public  async Task<bool>  GameOver(string userId)
     {
+      
+        var session = gameSessionService.GetSessionForUser(userId);
+
+        if (gameSessionService.IsGameOver(userId))
+        {
+            
+await Clients.Group(session.Id.ToString()).SendAsync("GameOver", "Kraj igre");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         
-        return false;
+        
+
     }
 
 

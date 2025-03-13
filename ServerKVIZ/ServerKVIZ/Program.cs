@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using ServerKVIZ.Models;
 using ServerKVIZ.Repositoryes;
 using ServerKVIZ.Services;
 using System.Text;
 
-//nije implementiran do kraja DI za PlayerServices i QuestionServices, i jos neke sitnice :(
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var jwtKey = jwtSettings["Key"];
@@ -19,7 +22,7 @@ if (string.IsNullOrEmpty(jwtKey))
 }
 
 
-builder.Services.AddSignalR();
+
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -29,32 +32,43 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-            ValidateIssuer = true,
+            ValidateIssuer = false,
             ValidateAudience = false,
             ValidateLifetime = true,
             ClockSkew = TimeSpan.Zero
         };
     });
 
-builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<IMemoryCache>(sp => new MemoryCache(new MemoryCacheOptions()));
+
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();
-builder.Services.AddTransient<IQuestionRepository, TriviaQuestionsRepository>();
-builder.Services.AddTransient<IQuestionService,QuestionServices>();
-builder.Services.AddTransient<IPlayerRepository,PlayerRepository>();
+builder.Services.AddSingleton<IQuestionRepository, TriviaQuestionsRepository>();
+builder.Services.AddSingleton<IQuestionService,QuestionServices>();
+builder.Services.AddSingleton<IPlayerRepository,PlayerRepository>();
 builder.Services.AddTransient<IPlayerServices,PlayerServices>();
-builder.Services.AddTransient<IGameSessionService,GameSessionServices>();
+builder.Services.AddSingleton<IGameSessionService,GameSessionServices>();
+
+
 builder.Services.AddTransient<IAuthentificatable,PlayerServices>();
 
 
+//zaboravio sam dodat dublju specifikaciju comita
 
-
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSignalR()
+    .AddJsonProtocol(options => {
+        options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+        // Ovo će zadržati PascalCase imena svojstava koja imate u C# klasi
+    });
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -67,15 +81,12 @@ app.UseRouting();
 app.UseWebSockets(); 
 
 app.UseCors("AllowAll");
-app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<GameHub>("/gamehub");
-});
+app.MapHub<GameHub>("gamehub");
 
 app.MapControllers();
 app.Run();

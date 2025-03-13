@@ -15,10 +15,7 @@ namespace ServerKVIZ.Services
             public async Task<bool> Authentificate(string nickName, string password)
         {
             await playerRepository.StorePlayers();
-            for (int i = 0; i < playerRepository.GetAllPlayers().Count; i++)
-            {
-                Console.WriteLine(i + 1 + " " + playerRepository.GetPlayerByIndex(i).NickName + " " + playerRepository.GetPlayerByIndex(i).Password);
-            }
+            
             if (playerRepository.GetAllPlayers().Any(x => x.NickName == nickName && x.Password == password))
             {
                 return true;
@@ -30,8 +27,10 @@ namespace ServerKVIZ.Services
         }
         public Player GetPlayerById(string playerId)
         {
+            
             return playerRepository.GetPlayerById(playerId);
         }
+       
     
     }
 }
